@@ -37,6 +37,22 @@ export class RegularEmployee extends Employee {
     }
 }
 
+/*
+export class Manager extends RegularEmployee {
+
+    hra:number;
+
+    constructor(firstName:string,lastName:string,address:Address,basicPay:number,hra:number){
+        super(firstName,lastName,address,basicPay);
+        this.hra=hra;
+    }
+
+    netPay(): number {
+        return this.basicPay + this.hra - this.tax;
+    }
+}
+*/
+
 export class Manager extends RegularEmployee {
 
     constructor(firstName:string,lastName:string,address:Address,basicPay:number,public hra:number){

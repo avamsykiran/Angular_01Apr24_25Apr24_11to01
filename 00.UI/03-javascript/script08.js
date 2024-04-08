@@ -1,6 +1,6 @@
 //Objects Literals (JSON)
 
-let emp1 = {id:101,name:"Vamsy",sal:45600};
+emp1 = {id:101,name:"Vamsy",sal:45600};
 console.log(emp1);
 
 //constructor functions: a function that accepts proeprties and assigns them onto 'this'

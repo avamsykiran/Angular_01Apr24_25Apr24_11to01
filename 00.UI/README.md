@@ -457,7 +457,6 @@ CSS 3
         [s1!='v1']		 s1 attrib value not equal to v1
         [s1^='v1']		 s1 attrib value starts with the word v1
         [s1$='v1']		 s1 attrib value ends with the word v1
-
        
         Psuedo selectors
         ----------------------------------------------------------------------------

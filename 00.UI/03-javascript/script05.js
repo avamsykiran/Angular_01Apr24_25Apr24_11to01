@@ -1,5 +1,5 @@
 
-let s = "Hello World";
+s = "Hello World";
 
 console.log(s.length)
 console.log(s.toUpperCase())

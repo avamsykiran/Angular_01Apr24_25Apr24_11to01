@@ -8,11 +8,11 @@ const greetUser = function(user){
     console.log("Hello "+user);
 }
 
-const welcome = () => "Hai! You are welcome!";
+const welcome = () => "Hai! You are welcome!"; //arrow function having no-args and returns a string
 
-const welcomeUser = user => "Hello! "+user+" you are welcome";
+const welcomeUser = user => "Hello! "+user+" you are welcome"; //arrow function having an arg and returns a string
 
-const greetByTime = () => {
+const greetByTime = () => { //arrow function having no-arg and returns a string and has a complex implementation
     let h = (new Date()).getHours();
     
     let greeting="";
@@ -24,7 +24,7 @@ const greetByTime = () => {
     return greeting;
 };
 
-const simpleInterest = (p,t,r) => ((p*t*r)/100);
+const simpleInterest = (p,t,r) => ((p*t*r)/100); //arrow function having 3 arg and returns a number
 
 greet();
 greetUser("Vamsy");

@@ -1,0 +1,15 @@
+{
+  "name": "proj01",
+  "version": "1.0.0",
+  "description": "my nodejs project 01",
+  "main": "main.js",
+  "scripts": {
+    "start": "node main.js"
+  },
+  "author": "Vamsy Kiran",
+  "license": "ISC",
+  "dependencies": {
+    "bootstrap": "^5.3.3",
+    "jquery": "^3.7.1"
+  }
+}
