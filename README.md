@@ -321,6 +321,8 @@ Angular
                     background-color:'orange';
                 }
 
+        ng g c ComponentName --skip-tests
+
     Angular Data Binding
 
         allows us to access the fields and method of the component class in the component template.
@@ -334,9 +336,40 @@ Angular
             <h4> {{title}} </h4>
 
         Two-Way Data Binding
-        One-Way Data Bidning
+
+            This is used to load data or receive data into or from a form input control.
+            An attribute directive called 'ngModel' from 'FormsModule' from '@angular/forms' is used
+            to bind a field with an input control.
+
+            <input [(ngModel)]="field" />
+
+        One-Way Data Binding
             Attribute Binding
+
+                is used to bind the value of an expression to a html attribute.
+
+                <tag-name width="100"></tag-name>
+                <tag-name [width]="x"></tag-name>
+
             Event Binding
+
+                it is used to bind a method with an event so that the method bound is invoekd when the respective event occurs.
+
+                html-event-attributes           evnet-directives
+                ----------------------------------------------------------------------------
+                 onsubmit                       ngSubmit
+                 onfocus                        focus
+                 onblur                         blur
+                 onchange                       change
+                 onclick                        click
+                 ondblclick                     dblclick
+                 onmoueover                     mouseover
+                 onmoueleave                    mouseleave
+                                                             .....etc.,
+
+                <tag-name (event-directive)="method()"></tag-name>
+
+
             Style Binding
             Css Class Binding
             

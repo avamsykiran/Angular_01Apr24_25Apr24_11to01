@@ -1,0 +1,15 @@
+<section>
+    <h4>Data Binding Demo!</h4>
+
+    <p>Hai <strong>{{userName}}</strong> ! We welcoem you!</p>
+
+    <div>
+        <img [src]="this.logos[this.logoIndex]" (click)="changeIndex()" />
+    </div>
+
+    <form>
+        <label>User Name: 
+            <input type="text" name="tb1" [(ngModel)]="userName" />
+        </label>
+    </form>
+</section>
