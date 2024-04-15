@@ -369,7 +369,118 @@ Angular
 
                 <tag-name (event-directive)="method()"></tag-name>
 
-
             Style Binding
+
+                to bind an expression to a style property.
+
+                <tag-name [style.cssProperty]="expression"></tag-name>
+                    the expression should evalaute to a number or a string as 
+                    per the cssProperty (width needs a number, color needs a string)
+
+                <tag-name [ngStyle]="expression"></tag-name>
+                    the expression should evalaute to a json-object
+                    having cssProperty as field and its valeu as value.
+
+                    dashboard.component.ts
+
+                        class DashboardComponent {
+                            dashboardStyle:any;
+
+                            construcotr(){
+                                this.dashboardStyle = {width:'100px',color:'#ff00ff',backgroundColor:'#000000'};
+                            }
+                        }
+
+                    dashboard.component.html
+
+                        <div [ngStyle]="dashboardStyle">
+                        </div>
+
             Css Class Binding
             
+                to bind an expression to the 'class' attribute , so that
+                we can apply or remove a css-class on to an element programatically.
+
+                <tag-name [class.className]="boolean-expres1sion"></tag-name>
+                    the boolean-exopression has to evaluate to true for the class to be applied.
+
+                <tag-name [ngClass]="expres1sion"></tag-name>
+
+                    the expression must evaluate to a json-object  ({className1:booleanValue,className2:booleanValue})
+                    or
+                    the expression must evaluate to a array (['class-name1','class-name2'])
+
+    Directives
+
+        Attribute Directives
+            ngModel, ngStyle, ngClass ...et.,
+
+        Event Attribute Directives
+            click,dblClick,blur,focus,change ..etc.,
+
+        Structural Directives
+
+            *ngIf
+
+                <ng-template [ngIf]="boolean-expression">
+                    <p> This para appears only if the boolean-expression evals to true</p>
+                </ng-template>
+
+                <p *ngIf="boolean-expression"> This para appears only if the boolean-expression evals to true</p>
+
+            *ngFor
+
+                <ng-template [ngFor]="let x of array; let i = index">
+                    <p> This para appears once for each x in the array.</p>
+                </ng-template>
+
+                <p *ngFor="let x of array; let i = index"> This para appears once for each x in the array.</p>
+
+            ngSwitch *ngSwitchCase *ngSwitchDefault
+
+                <div [ngSwitch]="expression">
+                    <p *ngSwtichCase="value1"> this para appears if the expression evals to value1 </p>
+                    <p *ngSwtichCase="value2"> this para appears if the expression evals to value2 </p>
+                    <p *ngSwtichCase="value3"> this para appears if the expression evals to value3 </p>
+                    <p *ngSwtichCase="value4"> this para appears if the expression evals to value4 </p>
+                    <p *ngSwtichDefault> this para appears if the expression evals to none of the values </p>
+                </div>
+
+    Content Projection
+
+        Content refers to html-content.
+
+        ng-container
+        ng-template
+        ng-content
+
+        are built in component that help us in contrlling the content.
+
+    Angular Pipes
+
+        a pipe is used to tranform a value into another value while rendering.
+
+        {{expression|pipe-name1:param1:parma2|pipe-name2:param}}
+
+        built-in
+            lowercase
+            uppercase
+            titlecase
+            number
+            currency
+            date
+            json
+            async
+
+        custom
+
+            ng g pipe pipe-name --skip-tests
+
+            @Pipe({
+                name:'pipeName'
+            })
+            class PipeNamePipe implements PipeTranform {
+                transform(value:any): any{
+                    //tranformation logic........
+                }
+            }

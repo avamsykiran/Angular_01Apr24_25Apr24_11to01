@@ -1,0 +1,49 @@
+<section>
+    <h4>String Pipes Demo!</h4>
+    <div style="columns: 4;">
+        <div>Original: {{str}}</div>
+        <div>{{str|uppercase}}</div>
+        <div>{{str|lowercase}}</div>
+        <div>{{str|titlecase}}</div>
+    </div>
+
+    <h4>Currency Pipe Demo!</h4>
+    <div style="columns: 7;">
+        <div>Original: {{num}}</div>
+        <div>{{num|currency:'INR'}}</div>
+        <div>{{num|currency:'USD'}}</div>
+        <div>{{num|currency:'GBP'}}</div>
+        <div>{{num|currency:'JPY'}}</div>
+        <div>{{num|currency:'AUD'}}</div>
+        <div>{{num|currency:'XYZ'}}</div>
+    </div>
+
+    <h4>Number Pipe Demo!</h4>
+    <div style="columns: 4;">
+        <div>Original: {{num}}</div>
+        <div>{{num|number:'2.2-3'}}</div>
+        <div>{{num|number:'5.2-3'}}</div>
+        <div>{{num|number:'5.0-0'}}</div>
+    </div>
+
+    <h4>Date Pipe Demo!</h4>
+    <div style="columns: 3;">
+        <div>Original: {{dt}}</div>
+        <div>{{dt|date:'short'}}</div>
+        <div>{{dt|date:'long'}}</div>
+        <div>{{dt|date:'dd-MM-yy'}}</div>
+        <div>{{dt|date:'dd-MMM-yyyy'}}</div>
+        <div>{{dt|date:'dd-MMMM-yyyy'}}</div>
+        <div>{{dt|date:'dd-MMM-yyyy hh:mm:ss aa'}}</div>
+        <div>{{dt|date:'dd-MMM-yyyy HH:mm:ss'}}</div>
+    </div>
+
+    <h4>Custom Pipe and Pipe Chaining!</h4>
+    <div style="columns: 4;">
+        <div>Original: {{num}}</div>
+        <div>{{num|intoWords}}</div>
+        <div>{{num|intoWords|lowercase}}</div>
+        <div>{{num|intoWords|titlecase}}</div>
+    </div>
+
+</section>

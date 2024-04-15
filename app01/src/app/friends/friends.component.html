@@ -1,0 +1,41 @@
+<section>
+    <h4>Structural Directives Demo!</h4>
+<!--
+    <p *ngIf="friends.length===0">
+        <strong>No Friends To Display</strong>
+    </p>
+
+    <div *ngIf="friends.length>0">
+        <h5>Friends List</h5>
+        <ol>
+            <li *ngFor="let f of friends; let i = index">
+                {{f}} <button type="button" (click)="remove(i)"> REMOVE </button>
+            </li>
+        </ol>
+    </div>
+-->
+
+    <ng-container *ngIf="friends.length>0 then friendsList; else noFriendsMsg"></ng-container>
+
+    <ng-template #friendsList>
+        <h5>Friends List</h5>
+        <ol>
+            <li *ngFor="let f of friends; let i = index">
+                {{f}} <button type="button" (click)="remove(i)"> REMOVE </button>
+            </li>
+        </ol>
+    </ng-template>
+
+    <ng-template #noFriendsMsg>
+        <p>
+            <strong>No Friends To Display</strong>
+        </p>    
+    </ng-template>
+
+    <form (ngSubmit)="add()">
+        <label>Friend Name
+            <input type="text" name="tb1" [(ngModel)]="friendName" />
+        </label>
+        <button>ADD</button>
+    </form>
+</section>

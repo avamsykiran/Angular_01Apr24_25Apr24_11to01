@@ -10,6 +10,8 @@ export class WelcomeComponent {
   userName:string;
   logos:string[];
   logoIndex:number;
+  logoWidth:number;
+  decorator:any;
 
   constructor(){
     this.userName="SomeBody";
@@ -20,6 +22,8 @@ export class WelcomeComponent {
       "assets/imgs/w3.jpeg",
       "assets/imgs/w4.jpeg"
     ];
+    this.logoWidth=100;
+    this.decorator={bordered:true,centered:true};
   }
 
   changeIndex(){

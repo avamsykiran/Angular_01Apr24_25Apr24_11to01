@@ -4,12 +4,33 @@
     <p>Hai <strong>{{userName}}</strong> ! We welcoem you!</p>
 
     <div>
-        <img [src]="this.logos[this.logoIndex]" (click)="changeIndex()" />
+        <img 
+            [src]="this.logos[this.logoIndex]" 
+            (click)="changeIndex()" 
+            [style.width]="logoWidth+'px'"
+            [ngClass]="decorator" />
     </div>
 
     <form>
-        <label>User Name: 
-            <input type="text" name="tb1" [(ngModel)]="userName" />
-        </label>
+        <div>
+            <label>User Name:
+                <input type="text" name="tb1" [(ngModel)]="userName" />
+            </label>
+        </div>
+        <div>
+            <label>Logo Width: <strong>{{logoWidth}} px</strong>
+                <input type="range" name="tb2" [(ngModel)]="logoWidth" min="50" max="600" />
+            </label>
+        </div>
+        <div>
+            <label>
+                <input type="checkbox" name="c1" [(ngModel)]="decorator.bordered" /> Apply Border
+            </label>
+        </div>
+        <div>
+            <label>
+                <input type="checkbox" name="c1" [(ngModel)]="decorator.centered" /> Align Center
+            </label>
+        </div>
     </form>
 </section>
