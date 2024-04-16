@@ -7,6 +7,7 @@ import { WelcomeComponent } from './welcome/welcome.component';
 import { FriendsComponent } from './friends/friends.component';
 import { PipesDemoComponent } from './pipes-demo/pipes-demo.component';
 import { IntoWordsPipe } from './into-words.pipe';
+import { HighlightDirective } from './highlight.directive';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import { IntoWordsPipe } from './into-words.pipe';
     WelcomeComponent,
     FriendsComponent,
     PipesDemoComponent,
-    IntoWordsPipe
+    IntoWordsPipe,
+    HighlightDirective
   ],
   imports: [
     BrowserModule,

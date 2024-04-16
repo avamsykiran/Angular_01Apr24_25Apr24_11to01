@@ -484,3 +484,73 @@ Angular
                     //tranformation logic........
                 }
             }
+
+    Angular Component and Directives LifeCycle Hooks
+
+        constructor()           //field initialization and dependency injection
+            |
+            | //initial rendering in the case of components
+            |
+            ↓
+        ngOnInit()              //is used to initializing after the first render
+            |
+            ↓
+        ngOnChanges()           //is invoked everytime the in-bound fields of teh component change.
+            |
+            ↓
+        ngDoCheck()            //is invoked afer the ngOnChanges everytime
+            |
+            ↓
+        ngDoDestroy()          //is invoked just before the compomnent or directive is unloaded.
+
+    in-bound fields / @Input() fields
+
+        field of an component or a directive can be marked @Input(), and that
+        fiels will act as a attribute to collect data from its host element.
+
+        @Component({
+            selector:'app-msg-box',
+            templateUrl:'app-msg-box.component.html'
+        })
+        class MsgBoxComponent {
+
+            @Input()
+            msgBoxType!:string;
+
+            constructor(){}
+        }
+        
+        <app-msg-box msgBoxType="info"></app-msg-box>
+        <app-msg-box msgBoxType="error"></app-msg-box>
+
+    Custom Attribute Directive
+
+        ng g directive DirectiveName --skip-tests
+
+        @Directive({
+            selector:'[appDirectiveName]'
+        })
+        class DirectiveNameDirective {
+
+            @Input()
+            appDirectiveName!:string;
+            
+            constructor(private ele : ElementRef){
+
+            }
+
+            @HostListener("mouseover")
+            doSomething(){
+
+            }
+
+        }
+
+        <tag-name appDirectiveName> </tag-name>
+        <tag-name appDirectiveName="someValue"> </tag-name>
+        <tag-name [appDirectiveName]="expression"> </tag-name>
+
+        1. the tag on which the directive is applied is calle the HOST.
+        2. we can access the HOST element by injecting an object of 'ElementRef' into
+            the directive constructor
+        3. We use @HostListener() decorator to handle events on the host element.
