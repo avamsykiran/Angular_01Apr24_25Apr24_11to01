@@ -554,3 +554,44 @@ Angular
         2. we can access the HOST element by injecting an object of 'ElementRef' into
             the directive constructor
         3. We use @HostListener() decorator to handle events on the host element.
+
+    Integrate Bootstrap with Angular
+
+        ng add bootstrap
+
+        include the bootstrap css file and js file into the
+        scripts and styles section of the angular.json file.
+
+        angular.json
+            styles      node_modules/bootstrap/dist/css/bootstrap.min.css
+            scripts      node_modules/bootstrap/dist/js/bootstrap.min.js
+
+    Angular Routing
+
+        is used to render a component whenever its mapped path
+        appers on the url.
+
+        RouterModule from @angular/router is used to config routing.
+
+        Routes              type Route[]
+
+        Route               model           {
+                                                path:'abcd',
+                                                component:MyComponent1,
+                                                redirect:'',
+                                                pathMatch:'startsWith | full'
+                                            }
+        
+        Router              service         navigate(["sales",itemId,year]),
+                                            navigateByUrl("/sales/101/2024")
+
+        ActivatedRouter     service         to extract request prams or 
+                                            path parameters or path or any other info from 
+                                            the current url
+
+        router-outlet       component       that is replaced by the component that matches the path
+
+        routerLink          directive       used on 'a' element instead of its 'href' attribute.
+
+        routerLinkActive    directive       take a css-class-name and that css-class is applied on
+                                            the link whenever that link is active.
