@@ -595,3 +595,14 @@ Angular
 
         routerLinkActive    directive       take a css-class-name and that css-class is applied on
                                             the link whenever that link is active.
+
+    Angular Services
+
+        Service is a class that holds bussiness logic. Computations, Custom Validations, Rest api
+        calls ..et., can go into these classes.
+
+        ng g service ServiceName --skip-tests
+
+        an object of a service is injectable into any component or other services as well.
+
+    

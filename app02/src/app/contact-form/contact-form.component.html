@@ -1,1 +1,31 @@
-<p>contact-form works!</p>
+
+<section class="col-sm-5 mx-auto">
+
+    <h4>New Contact</h4>
+
+    <form (ngSubmit)="formSubmitted()">
+        <div class="form-group">
+            <label>Contact Id</label>
+            <input type="number" name="tb1" readonly [(ngModel)]="contact.id" />
+        </div>
+        <div class="form-group">
+            <label>Full Name</label>
+            <input type="text" name="tb2" [(ngModel)]="contact.fullName" />
+        </div>
+        <div class="form-group">
+            <label>Mobile</label>
+            <input type="text" name="tb3"  [(ngModel)]="contact.mobile" />
+        </div>
+        <div class="form-group">
+            <label>Mail Id</label>
+            <input type="email" name="tb4"  [(ngModel)]="contact.mail" />
+        </div>
+        <div class="form-group">
+            <label>Date Of Birth</label>
+            <input type="date" name="tb5"  [(ngModel)]="contact.dateOfBirth" />
+        </div>
+        <div class="d-grid mt-1">
+            <button class="btn btn-primary">ADD</button>
+        </div>
+    </form>
+</section>

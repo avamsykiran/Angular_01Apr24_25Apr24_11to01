@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { ContactService } from '../services/contact.service';
+import { Contact } from '../models/contact';
 
 @Component({
   selector: 'app-contacts-list',
@@ -7,4 +9,13 @@ import { Component } from '@angular/core';
 })
 export class ContactsListComponent {
 
+  contacts!:Contact[];
+
+  constructor(private contactService:ContactService){
+
+  }
+
+  ngOnInit(){
+    this.contacts=this.contactService.getAll();
+  }
 }
