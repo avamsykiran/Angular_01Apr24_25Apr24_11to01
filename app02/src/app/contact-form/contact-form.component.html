@@ -1,31 +1,45 @@
 
-<section class="col-sm-5 mx-auto">
+<section class="col-sm-4 mx-auto">
 
     <h4>New Contact</h4>
 
-    <form (ngSubmit)="formSubmitted()">
+    <form (ngSubmit)="formSubmitted()" #contactForm="ngForm">
         <div class="form-group">
             <label>Contact Id</label>
-            <input type="number" name="tb1" readonly [(ngModel)]="contact.id" />
+            <input type="number" name="tb1" readonly [(ngModel)]="contact.id" class="form-control"/>
         </div>
         <div class="form-group">
             <label>Full Name</label>
-            <input type="text" name="tb2" [(ngModel)]="contact.fullName" />
+            <input type="text" name="tb2" [(ngModel)]="contact.fullName" class="form-control" #fullName="ngModel" required minlength="5"/>
+            <div class="alert alert-danger p-2" *ngIf="fullName.invalid && (fullName.touched || fullName.dirty)">
+                <span *ngIf="fullName.errors!['required']">This field is a mandatory field</span>
+                <span *ngIf="fullName.errors!['minlength']">Atleast 5 letter expected.</span>
+            </div>
         </div>
         <div class="form-group">
             <label>Mobile</label>
-            <input type="text" name="tb3"  [(ngModel)]="contact.mobile" />
+            <input type="text" name="tb3"  [(ngModel)]="contact.mobile" class="form-control" #mobile="ngModel" required pattern="[1-9][0-9]{9}"/>
+            <div class="alert alert-danger p-2" *ngIf="mobile.invalid && (mobile.touched || mobile.dirty)">
+                <span *ngIf="mobile.errors!['required']">This field is a mandatory field</span>
+                <span *ngIf="mobile.errors!['pattern']">A ten digit number expected.</span>
+            </div>
         </div>
         <div class="form-group">
             <label>Mail Id</label>
-            <input type="email" name="tb4"  [(ngModel)]="contact.mail" />
+            <input type="email" name="tb4"  [(ngModel)]="contact.mail" class="form-control" #mail="ngModel" required>
+            <div class="alert alert-danger p-2" *ngIf="mail.invalid && (mail.touched || mail.dirty)">
+                <span *ngIf="mail.errors!['required']">This field is a mandatory field</span>
+            </div>
         </div>
         <div class="form-group">
             <label>Date Of Birth</label>
-            <input type="date" name="tb5"  [(ngModel)]="contact.dateOfBirth" />
+            <input type="date" name="tb5"  [(ngModel)]="contact.dateOfBirth" class="form-control" #dateOfBirth="ngModel" required/>
+            <div class="alert alert-danger p-2" *ngIf="dateOfBirth.invalid && (dateOfBirth.touched || dateOfBirth.dirty)">
+                <span *ngIf="dateOfBirth.errors!['required']">This field is a mandatory field</span>
+            </div>
         </div>
         <div class="d-grid mt-1">
-            <button class="btn btn-primary">ADD</button>
+            <button class="btn btn-primary" [disabled]="contactForm.invalid">ADD</button>
         </div>
     </form>
 </section>
