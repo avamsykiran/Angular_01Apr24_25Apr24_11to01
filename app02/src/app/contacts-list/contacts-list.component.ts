@@ -16,6 +16,15 @@ export class ContactsListComponent {
   }
 
   ngOnInit(){
+    this.refresh();
+  }
+
+  refresh(){
     this.contacts=this.contactService.getAll();
+  }
+
+  deleteContact(id:number){
+    this.contactService.deleteById(id);
+    this.refresh();
   }
 }

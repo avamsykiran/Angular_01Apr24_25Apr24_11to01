@@ -1,7 +1,7 @@
 
 <section class="col-sm-4 mx-auto">
 
-    <h4>New Contact</h4>
+    <h4>{{isEditing?"Edit":"New"}} Contact</h4>
 
     <form (ngSubmit)="formSubmitted()" #contactForm="ngForm">
         <div class="form-group">
@@ -39,7 +39,7 @@
             </div>
         </div>
         <div class="d-grid mt-1">
-            <button class="btn btn-primary" [disabled]="contactForm.invalid">ADD</button>
+            <button class="btn btn-primary" [disabled]="contactForm.invalid"> {{isEditing?"UPDATE":"ADD"}} CONTACT </button>
         </div>
     </form>
 </section>

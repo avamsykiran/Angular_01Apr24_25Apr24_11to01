@@ -8,6 +8,7 @@ const routes: Routes = [
   {path:'',pathMatch:'full',redirectTo:'/list'},
   {path:'list',component:ContactsListComponent},
   {path:'add',component:ContactFormComponent},
+  {path:'edit/:cid',component:ContactFormComponent},
   {path:'**',component:NoSuchPageComponent}
 ];
 
