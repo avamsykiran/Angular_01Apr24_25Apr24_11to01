@@ -619,3 +619,59 @@ Angular
             the template driven form depend of html 5 validation attributes for validation.
 
         Model Driven Forms / Reactive Forms
+
+            These forms are backed-up by a javascript controlled model.
+            Testing these forms is very easy and they support complex nested models as well.
+
+            interface Address{
+                doorNumber:string;
+                city:string;]
+                state:string;
+            }
+
+            interface Employee {
+                id:number;
+                fullName:string;
+                salary:number;
+                address:Address;
+            }
+
+            Now Employee is a nested model having fields like emp.address.city ...etc.,
+
+            'ReactiveFormsModule' from '@angular/forms'
+
+            formGroup
+            formControl
+            formControlName
+            
+        Custom Validators
+
+            minAge(ageLimit:number) : ValidatorFn {
+                return (control:AbstractControl) : ValidationErrors | null => {
+
+                let isValid = true;
+
+                let dobInputted = control.value;
+
+                if(dobInputted){
+                    let dob = new Date(dobInputted);
+                    let today = new Date();
+                    let age = today.getFullYear() - dob.getFullYear();
+                    isValid = age >= ageLimit;
+                }
+
+                return isValid? null : {minAge:true}; 
+
+                };
+            }
+
+    rxjs - Observables
+
+    json-server - to create a fake rest-api
+
+    HttpClient  - to call rest-api
+
+Assignment
+
+    Create an angular SPA to perform CRUD operations on Employee (id,fullName,dateOfJoining,mobile,salary).
+
