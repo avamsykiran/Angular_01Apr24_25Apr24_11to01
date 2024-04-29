@@ -649,25 +649,54 @@ Angular
             minAge(ageLimit:number) : ValidatorFn {
                 return (control:AbstractControl) : ValidationErrors | null => {
 
-                let isValid = true;
+                    let isValid = true;
 
-                let dobInputted = control.value;
+                    let dobInputted = control.value;
 
-                if(dobInputted){
-                    let dob = new Date(dobInputted);
-                    let today = new Date();
-                    let age = today.getFullYear() - dob.getFullYear();
-                    isValid = age >= ageLimit;
-                }
+                    if(dobInputted){
+                        let dob = new Date(dobInputted);
+                        let today = new Date();
+                        let age = today.getFullYear() - dob.getFullYear();
+                        isValid = age >= ageLimit;
+                    }
 
-                return isValid? null : {minAge:true}; 
+                    return isValid? null : {minAge:true}; 
 
                 };
             }
 
     rxjs - Observables
 
+        Observable is an enchance Promise .
+
+        Promise uses 'resolve' and 'reject' callback to signal completion and error respectivly.
+
+        Observable uses 'observer' object, where observer.complete, observer.next and observer.error methods
+        are offered to signal completion and intermidiate values and error respectively.
+
+        Promise cna be initiated only once by calling 'then' method.
+        
+        Observable can be initiated any number of times by calling 'subscribe' method.
+
+        An observable can be canceled by calling 'unsubscribe' method as well.
+
     json-server - to create a fake rest-api
+
+        is used to generate fake rest-api from a .json file of data
+        for the purpose of learning.
+
+        md adb-api
+        cd adb-api
+        npm init -y
+        npm i json-server@0.17.4
+
+        create adb-api/data.json file with some hypothetical data.
+
+        In package.json and edit "start" script as "json-server --port 9999 --watch ./data.json"
+
+        npm start
+
+        
 
     HttpClient  - to call rest-api
 
