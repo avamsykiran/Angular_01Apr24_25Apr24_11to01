@@ -696,9 +696,14 @@ Angular
 
         npm start
 
-        
-
     HttpClient  - to call rest-api
+
+        HttpClientModule
+            |- HttpClient
+                |- get(url) : Observable
+                |- put(url,reqBody) : Observable
+                |- post(url,reqBody) : Observable
+                |- delete(url) : Observable
 
 Assignment
 

@@ -1,0 +1,41 @@
+<section class="col-sm-10 mx-auto">
+    <h4>Contacts List</h4>
+
+    <div *ngIf="!contacts && !errMsg" class="alert alert-info p-2 fw-bold">
+        Please Wait While Loading....!
+    </div>
+
+    <div *ngIf="errMsg" class="alert alert-danger p-2 fw-bold">
+        {{errMsg}}
+    </div>
+
+    <div *ngIf="contacts && contacts.length===0" class="alert alert-info p-2 fw-bold">
+        We have no contacts to display! Please add a contact.
+    </div>
+
+    <table *ngIf="contacts && contacts.length>0" class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th>Contact#</th>
+                <th>Full Name</th>
+                <th>Mobile</th>
+                <th>Mail</th>
+                <th>DoB</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let c of contacts">
+                <td>{{c.id}}</td>
+                <td>{{c.fullName}}</td>
+                <td>{{c.mobile}}</td>
+                <td>{{c.mail}}</td>
+                <td>{{c.dateOfBirth}}</td>
+                <td>
+                    <a [routerLink]="['/edit',c.id]" class="btn btn-sm btn-secondary me-2">EDIT</a>
+                    <button type="button" class="btn btn-sm btn-danger" (click)="deleteContact(c.id)">DELETE</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
