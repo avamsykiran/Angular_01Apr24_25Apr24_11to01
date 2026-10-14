@@ -236,10 +236,18 @@ CSS 3
             style is defiend in a seperate file with extension .css
             and that cna be linked to any number of html pages using
                 
-                <link href="fileName.css" rel="stylesheet" />
+                <head>
+                    <link href="fileName.css" rel="stylesheet" />
+                </head>
 
         
         Selector is a string that qualfies the elements to be applied with the style.
+
+            Tag Name Selector
+            Attribute Selector
+            Class Selector
+            Id Selector
+            Psudeo Selector
 
             1. Tag Name
                     each tag name itself is a selector.
@@ -257,20 +265,12 @@ CSS 3
                     
                     [attributeName]{
                         css-property:value;
-                    }
-                    
-                    [attributeName=""]{
-                        css-property:value;
-                    }
-
+                    }                   
+                   
                     [src] {
                         width:50%;
                     }
-
-                    [type="number"] {
-                        text-align:right;
-                    }
-
+                    
             3. Class
 
                     is any usr defiend string. that should start with dot(.)
@@ -309,18 +309,17 @@ CSS 3
 
             5. Psuedo
 
-
     CSS - unit of measure
     ------------------------------------
 
-        absolute		(irrespective of screen size)
+        absolute		(irrespective of screen size and resolution)
             in
             mm
             cm
             pt		1 in = 72 pt
             pc		1 in = 6  pc   1 pc = 12 pt
         
-        relative 	(to screen size)
+        relative 	(to screen size and resolution)
         
             px
             
@@ -330,7 +329,7 @@ CSS 3
                         1 em = complete font-size
                                             
                         font-size: 12pt;
-                        width: 8em;	8*12pt = 96pt;
+                        width: 8em;	//8*12pt = 96pt;
                         
             vh			1% of viewport height
             vw			1% of viewport width
@@ -382,7 +381,7 @@ CSS 3
     CSS background color and image related properties
     ----------------------------------------------
         background-color
-        color
+        color                   means text color
         background-image
         background-repeat       no-repeat/repeat/repeat-x/repeat-y
         background-position
@@ -399,7 +398,7 @@ CSS 3
         
     CSS Text related Proeprties
     -----------------------------------
-        color
+        color               means text color
         direction
         letter-spacing
         word-spacing
@@ -699,7 +698,6 @@ JavaScript (ES6)
             These numbers must be printed asynchronously and the promise shall emit the
             sum of the random number after resolving and shall reject with an error if the
             count is negative...
-
 
     an assignment
     --------------------

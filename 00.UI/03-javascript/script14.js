@@ -24,3 +24,10 @@ const printAge = ({name,dob}) => {
 
 printAge(c1);
 
+var arr = [1,2,3,4,5,6,7,8];
+
+var [x,y,,z] = arr;
+
+console.log(x); //1
+console.log(y); //2
+console.log(z); //4

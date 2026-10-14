@@ -5,7 +5,7 @@ const greet = (userName="Somebody") => "Hello "+userName;
 console.log(greet());
 console.log(greet("Vamsy"));
 
-//rest params
+//rest params - var args
 
 /*const sum = (...nums) => {
     let s =0;

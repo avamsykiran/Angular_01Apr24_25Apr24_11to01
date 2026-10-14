@@ -26,7 +26,7 @@ let countFactors = async n => {
     console.log(`counting the factors of ${n}...`)
 
     if (n === 0) {
-        throw new Error("Zero is neither prime nor composite");
+        throw new Error("Zero is neither prime nor composite"); //reject comes into action
     }
 
     let count = 2;
@@ -35,7 +35,7 @@ let countFactors = async n => {
             count++;
         }
     }
-    return count; 
+    return count;  //resolve comes into action
 }
 
 let pickPrimes = async (...nums) => {
