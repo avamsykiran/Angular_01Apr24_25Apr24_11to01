@@ -20,12 +20,11 @@ Typescript
         string
         boolean
         bigint
+        void
 
         symbol          //is used to handle UUID's 
                         const photoId:symbol = Symbol("someKey")
-
-        void
-
+       
     Special Datatypes
 
         any
@@ -49,6 +48,8 @@ Typescript
                                 return `${x}`.length();
                             }else if( typeof(x) === 'string'){
                                 return x.length();
+                            }else if( typeof(x) === '[]'){
+                                return x.length;
                             }else {
                                 throw "length may not be relevant for this value";
                             }

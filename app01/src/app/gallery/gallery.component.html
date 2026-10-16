@@ -1,0 +1,17 @@
+<section class="card">
+
+    <h3>Gallery</h3>
+
+    <div>
+        <img 
+            [src]="banners[bannerIndex]" 
+            (click)="changeBanner()"
+            [width]="bannerWidth"
+            height="40px" />
+    </div>
+    <form>
+        <label>Width: {{bannerWidth}} px
+            <input type="range" min="25" max="250" [(ngModel)]="bannerWidth" name="bw" />            
+        </label>
+    </form>
+</section>

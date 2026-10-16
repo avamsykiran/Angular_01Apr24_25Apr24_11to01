@@ -12,113 +12,6 @@ Angular
         NodeJS          https://nodejs.org                          node --version
         Angular CLI     npm i -g @angular/cli                       ng version
 
-    NodeJS
-
-        is a javascript runtime.
-
-          .js
-          ----
-         nodejs
-        -------
-           OS
-
-
-        NodeJS offers npm (node package manager) as a build tool.
-
-        npm init -y         creates a new node project
-                            npm uses 'package.json' as a build config file.
-
-        npm i thrid-party-packge-name
-        npm uninstall thrid-party-packge-name
-
-                            node_modules    folder holds all the downloaded dependencies.
-
-        Javascript Modules
-
-            CommonJS Modules
-            RequireJS Modules
-            ES6 - ECMAScript Modules (esm)
-
-            Each .js file is a module
-
-            Each artifact of a Javascript module is private to that module.
-
-            'export' keyword is used to allow access to the artifacts of a module outside the module.
-
-            'import' keyword is used to bring the artifacts from one module to another.
-
-            'export default' is used to provide a default artifact of a module. And a module can have
-            only one such artifact. Default artifacts can be imported with out {} .
-
-    Typescript
-
-        Typescript = JavaScript + Types
-
-        Creating a project:
-
-            npm init -y
-            npm i Typescript 
-
-            npx tsc --init
-
-        Compiling
-
-            npx tsc filename.ts 
-
-        Datatypes
-
-            number
-            string
-            boolean
-            bigint
-            symbol
-            void
-
-        Special Datatypes
-
-            any
-            unknown
-            never
-            undefined
-            null
-
-        Standard tsconfig
-
-            {
-                "compilerOptions": {
-                    "module": "commonjs",
-                    "esModuleInterop": true,
-                    "target": "es6",
-                    "moduleResolution": "node",
-                    "sourceMap": false,
-                    "outDir": "dist"
-                },
-                "lib": ["es2015"]
-            }
-
-        functions
-
-            function funName(param1:type,param2:type) : returntype {
-
-            }
-
-            const funName = function(param1:type,param2:type) : returntype {
-
-            }
-
-            returnType can be any supported data type inc;uding void and never.
-
-            mostly we use void, and void facilitates null value.
-            never doesnt even allow nulls.
-
-            
-        OOP
-
-            interface
-            class
-            aliases
-            enums
-
     Angular Intro
 
         is a typescript based framework to develp SPA - Single Page Applications.
@@ -199,13 +92,13 @@ Angular
         inside the project
             ng build                 To compile *.ts into *.js and build the bundle into 'dist' folder
             ng test                  To compile *.ts into *.js and build the bundle and invoke the test cases   
-            ng serve                 To compile *.ts into *.js, build the bundle, hsot on a development server @ 4200
-            ng serve --port 9999     To compile *.ts into *.js, build the bundle, hsot on a development server @ 9999
-            ng serve --port 9999 -o  To compile *.ts into *.js, build the bundle, hsot on a development server @ 9999 and
+            ng serve                 To compile *.ts into *.js, build the bundle, host on a development server @ 4200
+            ng serve --port 9999     To compile *.ts into *.js, build the bundle, host on a development server @ 9999
+            ng serve --port 9999 -o  To compile *.ts into *.js, build the bundle, host on a development server @ 9999 and
                                      launch the app in a browser
 
             ng generate 
-            ng g                     To generate angular artifacts liek models, services, components, modules ...etc.,
+            ng g                     To generate angular artifacts like models, services, components, modules ...etc.,
 
     Angular Archetecture
 
@@ -239,7 +132,7 @@ Angular
                         templateUrl:'app-sales-dashboard.component.html',
                         styleUrls:['app-sales-dashboard.component.css']
                     })
-                    class SaelsDashboard {}
+                    class SalesDashboard {}
                
                 Pipes
                     @Pipe({
@@ -277,6 +170,8 @@ Angular
 
         a Root-Module cannot have 'exports' section
         a Feature Module cannot have 'bootstrap' section.
+        From Angualr17 onwards, angular modules are not mandate,
+        and the artifacts can live isolated or standalone.
 
     Angular Directives and Components
 
@@ -350,6 +245,9 @@ Angular
 
                 <tag-name width="100"></tag-name>
                 <tag-name [width]="x"></tag-name>
+
+                <img src="mylogo.png" />            <!--no binding-->
+                <img [src]="logoFileName" />        <!--attribute binding-->
 
             Event Binding
 

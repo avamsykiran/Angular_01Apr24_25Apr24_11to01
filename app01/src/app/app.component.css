@@ -1,0 +1,8 @@
+.appHeader{
+    padding: 0.30em;
+    margin: 0;
+    margin-bottom: 5px;
+    background-color: #000000;
+    color: #ffffff;
+    text-transform: capitalize;
+}
