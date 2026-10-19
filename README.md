@@ -344,6 +344,66 @@ Angular
                     <p *ngSwtichDefault> this para appears if the expression evals to none of the values </p>
                 </div>
 
+        Angular Flow Controls (modern alternatives to Structural Directives)
+
+            Conditionally display content
+
+                @if (a > b) {
+                    <p>{{ a }} is greater than {{ b }}</p>
+                }
+
+                @if (a > b) {
+                    <p>{{ a }} is greater than {{ b }}</p>
+                } @else if (b > a) {
+                    <p>{{ a }} is less than {{ b }}</p>
+                } @else {
+                    <p>{{ a }} is equal to {{ b }}</p>
+                }
+
+                @if (user.profile.settings.startDate; as startDate) {
+                    {{ startDate }}
+                }
+
+                @switch (userPermissions) {
+                    @case ('admin') {
+                        <app-admin-dashboard />
+                    }
+                    @case ('reviewer')
+                    @case ('editor') {
+                        <app-editor-dashboard />
+                    }
+                    @default {
+                        <app-viewer-dashboard />
+                    }
+                }
+
+            Repeat content
+
+                @for (item of items; track item.id) {
+                    <li> {{ item.name }} </li>
+                }   
+
+                Contextual variables in @for blocks
+                    Inside @for blocks, several implicit variables are always available:
+                    Variable	Meaning
+                    --------------------------------------------------------------------
+                    $count	    Number of items in a collection iterated over
+                    $index	    Index of the current row
+                    $first	    Whether the current row is the first row
+                    $last	    Whether the current row is the last row
+                    $even	    Whether the current row index is even
+                    $odd	    Whether the current row index is odd
+
+                @for (item of items; track item.id; let idx = $index, e = $even) {
+                    <p>Item #{{ idx }}: {{ item.name }}</p>
+                }
+
+                @for (item of items; track item.name) {
+                    <li>{{ item.name }}</li>
+                } @empty {
+                    <li>There are no items.</li>
+                }
+
     Content Projection
 
         Content refers to html-content.
@@ -352,7 +412,7 @@ Angular
         ng-template
         ng-content
 
-        are built in component that help us in contrlling the content.
+        are built in component that help us in controlling the content.
 
     Angular Pipes
 
@@ -361,14 +421,25 @@ Angular
         {{expression|pipe-name1:param1:parma2|pipe-name2:param}}
 
         built-in
-            lowercase
-            uppercase
-            titlecase
-            number
-            currency
-            date
-            json
-            async
+            lowercase               {{userName|lowercase}}
+            uppercase               {{userName|uppercase}}
+            titlecase               {{userName|titlecase}}
+            
+            number                  {{emp.empId|number:'3.0'}}  //means three digits on the left side of decimal and no-decimals
+                                    eg: 001
+                                        012
+                                        312
+
+            currency                {{price|currency:'INR'}}    //displays rupee symbol
+                                    {{price|currency:'USD'}}    //displays dollar symbol
+            date                    {{emp.joinDate|date:'short'}}
+                                    {{emp.joinDate|date:'long'}}
+                                    {{emp.joinDate|date:'yyyy-MM-dd'}}
+                                    {{message.timestamp|date:'yyyy-MM-dd hh:mm:ss'}}
+
+            json                    {{emp|json}}
+
+            async                   {{getEmployeesRestApiCall|async}}
 
         custom
 
@@ -393,7 +464,7 @@ Angular
         ngOnInit()              //is used to initializing after the first render
             |
             ↓
-        ngOnChanges()           //is invoked everytime the in-bound fields of teh component change.
+        ngOnChanges()           //is invoked everytime the in-bound fields of the component change.
             |
             ↓
         ngDoCheck()            //is invoked afer the ngOnChanges everytime
@@ -453,6 +524,31 @@ Angular
             the directive constructor
         3. We use @HostListener() decorator to handle events on the host element.
 
+    Angular Services
+
+        Service is a class that holds bussiness logic. Computations, Custom Validations, Rest api
+        calls ..et., can go into these classes.
+
+        ng g service ServiceName --skip-tests
+
+        an object of a service is injectable into any component or other services as well.
+
+        @Injectable({
+            providedIn:"root"
+        })
+        export class EmployeeService{
+
+        }
+
+        @Component({
+            ....
+        })
+        export class EmployeeDashboard {
+            constructor(private empService:EmployeeService){
+
+            }
+        }
+
     Integrate Bootstrap with Angular
 
         ng add bootstrap
@@ -474,10 +570,24 @@ Angular
         Routes              type Route[]
 
         Route               model           {
-                                                path:'abcd',
-                                                component:MyComponent1,
+                                                path:'emps',
+                                                component:EmployeesMasterComponent,
                                                 redirect:'',
-                                                pathMatch:'startsWith | full'
+                                                pathMatch:'startsWith | full',
+                                                children:[
+                                                    {
+                                                        path:'',    //works for http://localhost:9999/emps
+                                                        component:'EmployeesListComponent'
+                                                    },
+                                                    {
+                                                        path:'add', //works for http://localhost:9999/emps/add
+                                                        component:'EmployeeFormComponent'
+                                                    },
+                                                    {
+                                                        path:'edit', //works for http://localhost:9999/emps/edit
+                                                        component:'EmployeeFormComponent'
+                                                    },
+                                                ]
                                             }
         
         Router              service         navigate(["sales",itemId,year]),
@@ -488,20 +598,19 @@ Angular
                                             the current url
 
         router-outlet       component       that is replaced by the component that matches the path
+                                            
+                                            app.component.html
+                                                <Header />
+                                                <NavBar />
+                                                <router-outlet />
+                                                <Footer />
 
         routerLink          directive       used on 'a' element instead of its 'href' attribute.
 
         routerLinkActive    directive       take a css-class-name and that css-class is applied on
                                             the link whenever that link is active.
 
-    Angular Services
-
-        Service is a class that holds bussiness logic. Computations, Custom Validations, Rest api
-        calls ..et., can go into these classes.
-
-        ng g service ServiceName --skip-tests
-
-        an object of a service is injectable into any component or other services as well.
+  
 
     Angular Forms
 
