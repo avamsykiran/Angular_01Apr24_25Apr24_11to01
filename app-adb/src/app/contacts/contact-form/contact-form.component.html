@@ -1,1 +1,96 @@
-<p>contact-form works!</p>
+ <div class="row justify-content-center">
+        <div class="col-md-6 col-lg-5">
+          <div class="card shadow-sm">
+            <div class="card-header bg-primary text-white">
+              <h4 class="mb-0">{{ isEditMode ? 'Edit Contact' : 'Add Contact' }}</h4>
+            </div>
+            
+            <div class="card-body">
+              <form [formGroup]="contactForm" (ngSubmit)="onSubmit()" novalidate>
+
+                <!-- Full Name -->
+                <div class="mb-3">
+                  <label for="fullName" class="form-label">Full Name</label>
+                  <input 
+                    id="fullName" 
+                    type="text" 
+                    formControlName="fullName" 
+                    class="form-control" 
+                    [class.is-invalid]="f.fullName.touched && f.fullName.invalid"
+                    placeholder="full name" />
+                  
+                  @if (f.fullName.touched && f.fullName.invalid) {
+                    <div class="invalid-feedback">
+                      @if (f.fullName.errors!['required']) { <span>Full name is required.</span> }
+                      @if (f.fullName.errors!['minlength']) { <span>Must be at least 3 characters.</span> }
+                    </div>
+                  }
+                </div>
+
+                <!-- Mobile Number -->
+                <div class="mb-3">
+                  <label for="mobileNumber" class="form-label">Mobile Number</label>
+                  <input 
+                    id="mobileNumber" 
+                    type="tel" 
+                    formControlName="mobileNumber" 
+                    class="form-control" 
+                    [class.is-invalid]="f.mobileNumber.touched && f.mobileNumber.invalid"
+                    placeholder="9876543210" />
+                  
+                  @if (f.mobileNumber.touched && f.mobileNumber.invalid) {
+                    <div class="invalid-feedback">
+                      @if (f.mobileNumber.errors!['required']) { <span>Mobile number is required.</span> }
+                      @if (f.mobileNumber.errors!['pattern']) { <span>Enter a valid 10-digit mobile number.</span> }
+                    </div>
+                  }
+                </div>
+
+                <!-- Email ID -->
+                <div class="mb-3">
+                  <label for="mailId" class="form-label">Email ID</label>
+                  <input 
+                    id="mailId" 
+                    type="email" 
+                    formControlName="mailId" 
+                    class="form-control" 
+                    [class.is-invalid]="f.mailId.touched && f.mailId.invalid"
+                    placeholder="john.doe&#64;example.com" />
+                  
+                  @if (f.mailId.touched && f.mailId.invalid) {
+                    <div class="invalid-feedback">
+                      @if (f.mailId.errors!['required']) { <span>Email is required.</span> }
+                      @if (f.mailId.errors!['email']) { <span>Enter a valid email address.</span> }
+                    </div>
+                  }
+                </div>
+
+                <!-- Date of Birth -->
+                <div class="mb-4">
+                  <label for="dateOfBirth" class="form-label">Date of Birth</label>
+                  <input 
+                    id="dateOfBirth" 
+                    type="date" 
+                    formControlName="dateOfBirth" 
+                    class="form-control" 
+                    [class.is-invalid]="f.dateOfBirth.touched && f.dateOfBirth.invalid" />
+                  
+                  @if (f.dateOfBirth.touched && f.dateOfBirth.invalid) {
+                    <div class="invalid-feedback">
+                      @if (f.dateOfBirth.errors!['required']) { <span>Date of birth is required.</span> }
+                    </div>
+                  }
+                </div>
+
+                <!-- Action Buttons -->
+                <div class="d-grid gap-2">
+                  <button type="submit" [disabled]="contactForm.invalid" class="btn btn-primary">
+                    {{ isEditMode ? 'Update Contact' : 'Save Contact' }}
+                  </button>
+                </div>
+
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
