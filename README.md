@@ -712,7 +712,97 @@ Angular
 
         npm start
 
-   
+Signals
+
+    Angular Change Detection - (using zone.js)
+        
+        angular traditionally uses zone.js for change detection and html-content update.
+
+        The component properties are continously monitored for changes, and when a change is detected,
+        the entire component template is scanned to identify places where the property is used, and those
+        html content areas are re-rendered. The time-taken to scan everrytime the entire template is the 
+        real issue (area of improvement needed).
+
+    Angular Signals are reactive primitives that hold a value and notify consumers whenever that value updates. 
+    And they do not need zone.js, allowing angular to completely remove zone.js in its future versions.
+
+    1. Writable Signals (signal)
+        Holds a value that can be directly modified using .set(), .update(), or mutate operations. 
+        We retrieve a signal's value by invoking it like a getter function (e.g., count()).
+
+            import { Component, signal } from '@angular/core';
+
+            @Component({
+                standalone: true,
+                selector: 'app-counter',
+                template: `
+                    <p>Count: {{ count() }}</p>
+                    <button (click)="increment()">Increment</button>
+                    <button (click)="reset()">Reset</button>
+                `
+            })
+            export class CounterComponent {
+                // Define a signal with an initial value
+                //count:number = 0;
+                count = signal<number>(0);
+
+                increment() {
+                    // Modify based on previous state
+                    //this.count++;
+                    this.count.update(val => val + 1);
+                }
+
+                reset() {
+                    // Replace the current value entirely
+                    //this.count=0;
+                    this.count.set(0);
+                }
+            }
+
+    2. Computed Signals (computed)
+        Read-only signals derived from other signals. They automatically track their dependencies and recalculate 
+        lazily—only re-evaluating when read and when their source signals change.
+
+            import { Component, signal, computed } from '@angular/core';
+
+            @Component({
+                standalone: true,
+                selector: 'app-cart',
+                template: `<p>Total Price: ${{ totalPrice() }}</p>`
+            })
+            export class CartComponent {
+                price = signal(100);
+                quantity = signal(2);
+
+                // Recalculates automatically when price or quantity updates
+                totalPrice = computed(() => this.price() * this.quantity());
+            }
+
+    3. Effects (effect)
+        An operation that executes automatically whenever one or more tracked signals change. 
+        Effects run asynchronously during change detection and are primarily used for side effects (logging, external API calls, persisting data to localStorage).
+
+            import { Component, signal, effect } from '@angular/core';
+
+            @Component({
+                standalone: true,
+                selector: 'app-user',
+                template: `<button (click)="toggleTheme()">Toggle Theme</button>`
+            })
+            export class UserComponent {
+                theme = signal<'light' | 'dark'>('light');
+
+                constructor() {
+                    // Automatically runs whenever `theme()` updates
+                    effect(() => {
+                        localStorage.setItem('user-theme', this.theme());
+                    });
+                }
+
+                toggleTheme() {
+                    this.theme.update(t => (t === 'light' ? 'dark' : 'light'));
+                }
+            }
 
 Assignment
 

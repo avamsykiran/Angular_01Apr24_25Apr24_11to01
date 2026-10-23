@@ -27,7 +27,7 @@ export class ContactsService {
   }
   
   addContact(contact:Contact):Observable<Contact> {
-    return this.httpClient.post<Contact>(apiEndpoint,contact);
+    return this.httpClient.post<Contact>(apiEndpoint,{...contact,contactId:undefined});
   }
 
   updateContact(contact:Contact):Observable<Contact> {

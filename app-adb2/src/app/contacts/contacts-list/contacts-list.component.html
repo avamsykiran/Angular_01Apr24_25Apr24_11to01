@@ -1,0 +1,47 @@
+
+<h3> Contacts List </h3>
+
+@if(loading()){
+    <app-msg-box message="Please wait while loading data..." messageType="info" />
+}
+
+@if(errMsg()){
+    <app-msg-box [message]="errMsg()" messageType="error" />
+}
+
+@if(contacts(); as contactList) {
+    <table class="table bordered stripped hovered">
+        <thead>
+            <tr>
+                <th>Contact#</th>
+                <th>Name</th>
+                <th>DoB</th>
+                <th>Mobile</th>
+                <th>Mail Id</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @for(c of contactList; track c.contactId){
+                <tr>
+                    <td>{{c.contactId}}</td>
+                    <td>{{c.fullName|titlecase}}</td>
+                    <td>{{c.dateOfBirth|date:'dd-MMM-yyyy'}}</td>
+                    <td>{{c.mobileNumber}}</td>
+                    <td>{{c.mailId}}</td>
+                    <td>
+                        <a [routerLink]="['/contacts','edit',c.contactId]" class="btn btn-sm btn-secondary me-1">EDIT</a>
+                        <button type="button" class="btn btn-sm btn-danger" (click)="removeContact(c.contactId)">DELETE</button>
+                    </td>
+                </tr>
+            }@empty {
+                <tr>
+                    <td colspan="6">
+                        <app-msg-box message="No records to display" messageType="info" />
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
